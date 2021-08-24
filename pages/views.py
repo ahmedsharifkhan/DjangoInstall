@@ -48,6 +48,10 @@ def about(request):
     return render(request, 'pages/about.html', context)
 
 
+def blog(request):
+    context = {}
+    return render(request, 'pages/blog.html', context)
+
 
 def contact(request):
     if request.method=="POST":
