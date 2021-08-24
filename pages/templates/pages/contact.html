@@ -1,0 +1,47 @@
+{% extends 'pages/nav.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Contact</h1>
+{% for message in messages  %}            
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>Message : </strong> {{ message }}
+      <a href="{% url 'contact' %}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </a>
+    </div>
+{% endfor %}    
+<hr>
+<div class="container my-3">
+  <h4>Share you thought</h4>
+  <form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" id="phone" name="phone">
+    </div>
+
+    <div class="form-group">
+      <label for="content">Describe your issue :</label>
+      <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea>
+    </div>
+
+
+    <!-- <button type="submit" class="btn mt-2 btn-primary">Submit</button> -->
+    <button type="submit" class="btn mt-2 btn-outline-danger">Send</button>
+  </form>
+</div>
+{% endblock content %}
