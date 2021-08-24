@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Contact
 import requests
 from django.contrib import messages
+from .models import Post
 # Create your views here.
 
 # def home(request):
@@ -49,7 +50,8 @@ def about(request):
 
 
 def blog(request):
-    context = {}
+    allPosts= Post.objects.all()
+    context={'allPosts': allPosts}
     return render(request, 'pages/blog.html', context)
 
 
