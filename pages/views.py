@@ -50,8 +50,9 @@ def about(request):
 
 
 def blog(request):
+    obj = blog.objects.get(id=1)
     allPosts= Post.objects.all()
-    context={'allPosts': allPosts}
+    context={'allPosts': allPosts, 'object':obj}
     return render(request, 'pages/blog.html', context)
 
 
