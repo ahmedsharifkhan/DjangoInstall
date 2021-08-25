@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Contact(models.Model):
@@ -20,6 +21,15 @@ class Post(models.Model):
     slug=models.CharField(max_length=130)
     timeStamp=models.DateTimeField(blank=True)
     content=models.TextField()
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.title + " by " + self.author
+
+    # @property
+	# def imageURL(self):
+	# 	try:
+	# 		url = self.image.url
+	# 	except:
+	# 		url = ''
+	# 	return url
